@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Webpage</title>
+    <link rel="icon" type="image/x-icon" href="C:\Users\ziari\OneDrive\Desktop\Work\IT\Portfolio\modern-ui-webpage\Favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .pixel-border {
+            border: 3px solid #2d3748;
+            border-radius: 0;
+            box-shadow: 4px 4px 0 0 #2d3748;
+        }
+        .pixel-card {
+            border: 3px solid #2d3748;
+            border-radius: 0;
+            box-shadow: 6px 6px 0 0 #2d3748;
+            transition: all 0.3s ease;
+        }
+        .pixel-card:hover {
+            box-shadow: 8px 8px 0 0 #2d3748;
+            transform: translate(-2px, -2px);
+        }
+        .font-pixel { font-family: 'Pixelify Sans', monospace; }
+        .font-press-start { font-family: 'Press Start 2P', monospace; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #eaaa66 0%, #59a24b 100%);
+        }
+        
+        .feature-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .animate-float {
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #46e546, #075906);
+            transition: width 1s ease-in-out;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-button.active {
+            background-color: #4f46e5;
+            color: rgb(255, 255, 255);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Navigation -->
+    <nav class="pixel-card bg-white sticky top-0 z-50 mb-0">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="font-pixel text-2xl font-bold text-gray-800">PIXELLATED UI</div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="font-press-start text-xs hover:text-blue-600 transition-colors">HOME</a>
+                    <a href="#features" class="font-press-start text-xs hover:text-blue-600 transition-colors">MAGIC</a>
+                    <a href="#gallery" class="font-press-start text-xs hover:text-blue-600 transition-colors">STUFF?</a>
+                    <a href="#contact" class="font-press-start text-xs hover:text-blue-600 transition-colors">CONTACT</a>
+                </div>
+                <button id="menuToggle" class="md:hidden pixel-border px-3 py-2 bg-blue-500 text-white">
+                    ☰
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="home" class="gradient-bg text-black py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="animate-float mb-8">
+                <div class="w-32 h-32 mx-auto pixel-card bg-white flex items-center justify-center">
+                    <span class="text-6xl">🐀</span>
+                </div>
+            </div>
+            <h1 class="font-pixel text-5xl md:text-7xl font-bold mb-6">PIXELLATED UI</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Had nothing better to do</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openModal('demoModal')" class="pixel-border bg-white text-gray-800 px-8 py-4 font-press-start text-xs hover:bg-gray-100 transition-colors">
+                    VIEW DEMO
+                </button>
+                <button onclick="scrollToSection('features')" class="pixel-border bg-transparent border-white text-white px-8 py-4 font-press-start text-xs hover:bg-white hover:text-gray-800 transition-colors">
+                    LEARN MORE
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-pixel text-4xl font-bold text-gray-800 mb-4">MAGIC</h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">Abracadabra?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="pixel-card feature-card p-6 text-center">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="font-pixel text-xl font-bold mb-3">FAST</h3>
+                    <p class="text-gray-600">Optimized for absolutley nothing</p>
+                </div>
+                
+                <div class="pixel-card feature-card p-6 text-center">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="font-pixel text-xl font-bold mb-3">PERFECT</h3>
+                    <p class="text-gray-600">I mean it works doesn't it?</p>
+                </div>
+                
+                <div class="pixel-card feature-card p-6 text-center">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="font-pixel text-xl font-bold mb-3">RESPONSIVE</h3>
+                    <p class="text-gray-600">Works perfectly on all devices from mobile to desktop</p>
+                </div>
+                
+                <div class="pixel-card feature-card p-6 text-center">
+                    <div class="text-4xl mb-4">🎆</div>
+                    <h3 class="font-pixel text-xl font-bold mb-3">ANIMATIONS</h3>
+                    <p class="text-gray-600">Smooth animations and transitions that work</p>
+                </div>
+                
+                <div class="pixel-card feature-card p-6 text-center">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <h3 class="font-pixel text-xl font-bold mb-3">CUSTOMIZABLE</h3>
+                    <p class="text-gray-600">Yes</p>
+                </div>
+                
+                <div class="pixel-card feature-card p-6 text-center">
+                    <div class="text-4xl mb-4">🥖</div>
+                    <h3 class="font-pixel text-xl font-bold mb-3">BAGUETTE</h3>
+                    <p class="text-gray-600">Ran out of ideas for the last panel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-pixel text-4xl font-bold text-gray-800 mb-4">INTERACTIVE DEMO</h2>
+                <p class="text-gray-600 text-lg">Try out some interactive components</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center mb-8">
+                    <button onclick="showTab('skills')" class="tab-button active pixel-border bg-gray-200 px-6 py-3 font-press-start text-xs mr-2 mb-2">
+                        SKILLS
+                    </button>
+                    <button onclick="showTab('tools')" class="tab-button pixel-border bg-gray-200 px-6 py-3 font-press-start text-xs mr-2 mb-2">
+                        TOOLS
+                    </button>
+                </div>
+                
+                <div id="skills" class="tab-content active pixel-card bg-white p-8">
+                    <h3 class="font-pixel text-2xl font-bold mb-6 text-center">SKILL LEVELS</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-press-start text-xs">HTML/CSS</span>
+                                <span class="font-press-start text-xs">85%</span>
+                            </div>
+                            <div class="skill-bar pixel-border">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-press-start text-xs">JAVASCRIPT</span>
+                                <span class="font-press-start text-xs">60%</span>
+                            </div>
+                            <div class="skill-bar pixel-border">
+                                <div class="skill-progress" data-width="60"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-press-start text-xs">REACT</span>
+                                <span class="font-press-start text-xs">67%</span>
+                            </div>
+                            <div class="skill-bar pixel-border">
+                                <div class="skill-progress" data-width="67"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-press-start text-xs">UI/UX DESIGN</span>
+                                <span class="font-press-start text-xs">80%</span>
+                            </div>
+                            <div class="skill-bar pixel-border">
+                                <div class="skill-progress" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tools" class="tab-content pixel-card bg-white p-8">
+                    <h3 class="font-pixel text-2xl font-bold mb-6 text-center">DEVELOPMENT TOOLS</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="pixel-border bg-gray-50 p-4 text-center hover:bg-gray-100 transition-colors">
+                            <div class="text-2xl mb-2">💻</div>
+                            <div class="font-press-start text-xs">VS CODE</div>
+                        </div>
+                        <div class="pixel-border bg-gray-50 p-4 text-center hover:bg-gray-100 transition-colors">
+                            <div class="text-2xl mb-2">🎨</div>
+                            <div class="font-press-start text-xs">FIGMA</div>
+                        </div>
+                        <div class="pixel-border bg-gray-50 p-4 text-center hover:bg-gray-100 transition-colors">
+                            <div class="text-2xl mb-2">🚀</div>
+                            <div class="font-press-start text-xs">REACT</div>
+                        </div>
+                        <div class="pixel-border bg-gray-50 p-4 text-center hover:bg-gray-100 transition-colors">
+                            <div class="text-2xl mb-2">🌍</div>
+                            <div class="font-press-start text-xs">NODE.JS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-pixel text-4xl font-bold text-gray-800 mb-4">DESIGN GALLERY</h2>
+                <p class="text-gray-600 text-lg">Showcase of UI components and designs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="pixel-card bg-white p-6 cursor-pointer" onclick="openModal('galleryModal')">
+                    <div class="bg-gradient-to-br from-blue-400 to-purple-500 h-32 mb-4 flex items-center justify-center">
+                        <span class="text-white font-pixel text-xl">CARD DESIGN</span>
+                    </div>
+                    <h4 class="font-pixel font-bold mb-2">Modern Panels</h4>
+                    <p class="text-sm text-gray-600">Panels with hover effects</p>
+                </div>
+                
+                <div class="pixel-card bg-white p-6 cursor-pointer" onclick="openModal('galleryModal')">
+                    <div class="bg-gradient-to-br from-green-400 to-blue-500 h-32 mb-4 flex items-center justify-center">
+                        <span class="text-white font-pixel text-xl">BUTTONS</span>
+                    </div>
+                    <h4 class="font-pixel font-bold mb-2">Interactive Buttons</h4>
+                    <p class="text-sm text-gray-600">Buttons that work</p>
+                </div>
+                
+                <div class="pixel-card bg-white p-6 cursor-pointer" onclick="openModal('galleryModal')">
+                    <div class="bg-gradient-to-br from-purple-400 to-pink-500 h-32 mb-4 flex items-center justify-center">
+                        <span class="text-white font-pixel text-xl">FORMS</span>
+                    </div>
+                    <h4 class="font-pixel font-bold mb-2">Form Elements</h4>
+                    <p class="text-sm text-gray-600">Communication thing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-pixel text-4xl font-bold text-gray-800 mb-4">GET IN TOUCH</h2>
+                <p class="text-gray-600 text-lg">Let's create something amazing together (hopefully)</p>
+            </div>
+            
+            <div class="max-w-2xl mx-auto">
+                <form class="pixel-card bg-gray-50 p-8">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="font-press-start text-xs block mb-2">NAME</label>
+                            <input type="text" class="w-full pixel-border bg-white px-4 py-3" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label class="font-press-start text-xs block mb-2">EMAIL</label>
+                            <input type="email" class="w-full pixel-border bg-white px-4 py-3" placeholder="your@email.com">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="font-press-start text-xs block mb-2">MESSAGE</label>
+                        <textarea class="w-full pixel-border bg-white px-4 py-3 h-32" placeholder="Your message..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full pixel-border bg-blue-500 text-white py-4 font-press-start text-xs hover:bg-blue-600 transition-colors">
+                        SEND MESSAGE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="font-pixel text-2xl font-bold mb-4">PIXELLATED UI</div>
+            <p class="text-gray-400 mb-6">Made with procrastiantion</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://github.com/Coder75-droid" class="text-gray-400 hover:text-white transition-colors">💻 GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="demoModal" class="modal">
+        <div class="pixel-card bg-white p-8 max-w-md mx-4">
+            <h3 class="font-pixel text-2xl font-bold mb-4">DEMO</h3>
+            <p class="mb-6">THE BUTTON ACTUALLY WORKS</p>
+            <button onclick="closeModal('demoModal')" class="pixel-border bg-blue-500 text-white px-6 py-3 font-press-start text-xs">
+                CLOSE
+            </button>
+        </div>
+    </div>
+    
+    <div id="galleryModal" class="modal">
+        <div class="pixel-card bg-white p-8 max-w-md mx-4">
+            <h3 class="font-pixel text-2xl font-bold mb-4">GALLERY ITEM</h3>
+            <p class="mb-6">This would show a detailed view of the selected gallery item.</p>
+            <button onclick="closeModal('galleryModal')" class="pixel-border bg-blue-500 text-white px-6 py-3 font-press-start text-xs">
+                CLOSE
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
